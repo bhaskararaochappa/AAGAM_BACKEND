@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AagamApplication {
 
 	public static void main(String[] args) {
-		System.out.println("main class");
+		System.out.println("main class bhaskar");
 		SpringApplication.run(AagamApplication.class, args);
 	}
 
