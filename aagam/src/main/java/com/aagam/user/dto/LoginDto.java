@@ -8,7 +8,7 @@ import lombok.Data;
 public class LoginDto {
 
     @NotBlank(message = "Phone number is mandatory")
-    private @JsonProperty("phone") String phoneNumber;
+  @JsonProperty("phone")   private  String phoneNumber;
 
     @NotBlank(message = "Password is mandatory")
     private String password;
