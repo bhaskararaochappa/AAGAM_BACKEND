@@ -31,9 +31,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public AuthResponse register(UserRegisterDto dto) {
         if(userRepository.existsByPhoneNumber(dto.getPhoneNumber())){
+            System.out.println(dto.getPhoneNumber()+"AlReady Exists");
             throw new RuntimeException("Phone number already registered");
+
         }
         if(userRepository.existsByEmail(dto.getEmail())){
+            System.out.println(dto.getEmail()+"AlReady Exists");
             throw new RuntimeException("Email already registered");
         }
 
@@ -42,7 +45,7 @@ public class UserServiceImpl implements UserService {
                 .email(dto.getEmail())
                 .phoneNumber(dto.getPhoneNumber())
                 .password(passwordEncoder.encode(dto.getPassword()))
-                .roles(Set.of(Role.CUSTOMER)) // default role
+                .roles(Set.of(Role.ADMIN)) // default role
                 .build();
 
         userRepository.save(user);
@@ -52,7 +55,7 @@ public class UserServiceImpl implements UserService {
                 user.getRoles().iterator().next().name()
         );
 
-        return new AuthResponse(token, user.getId(), user.getName(), user.getEmail(), user.getPhoneNumber(), Role.CUSTOMER);
+        return new AuthResponse(token, user.getId(), user.getName(), user.getEmail(), user.getPhoneNumber(), user.getRoles().iterator().next());
     }
 
     @Override
