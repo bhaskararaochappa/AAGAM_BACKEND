@@ -67,6 +67,7 @@ public class ProductServiceImpl implements ProductService {
 
         List<Product> entities = products.stream()
                 .map(dto -> {
+                    System.out.println("Saving product ***************: " + dto.categoryName());
                     Category category = categoryRepository.findByName(dto.categoryName())
                             .orElseThrow(() -> new RuntimeException("Category not found: " + dto.categoryName()));
                     return ProductMapper.toEntity(dto, category);

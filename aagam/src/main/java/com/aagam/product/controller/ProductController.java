@@ -41,7 +41,10 @@ public class ProductController {
     // Bulk create products
     @PostMapping("/bulk")
     public ResponseEntity<List<ProductResponseDto>> saveProducts(@RequestBody List<ProductRequestDto> products) {
+        System.out.println(products.toString()+ "     PRODUCTS");
+        System.out.println(products.get(0).categoryName());
         List<ProductResponseDto> saved = productService.saveProducts(products);
+
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 

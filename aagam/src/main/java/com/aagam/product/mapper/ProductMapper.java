@@ -4,6 +4,7 @@ import com.aagam.product.dto.ProductRequestDto;
 import com.aagam.product.dto.ProductResponseDto;
 import com.aagam.product.entity.Category;
 import com.aagam.product.entity.Product;
+import com.aagam.product.entity.ProductStatus;
 import com.aagam.product.entity.Variant;
 
 import java.util.List;
@@ -41,7 +42,7 @@ public class ProductMapper {
                 .name(dto.name())
                 .image(dto.image())
                 .visible(dto.visible())
-                .status(dto.status() != null ? com.aagam.product.entity.ProductStatus.valueOf(dto.status()) : com.aagam.product.entity.ProductStatus.ACTIVE)
+                .status(dto.status() != null ? com.aagam.product.entity.ProductStatus.valueOf(dto.status()) : ProductStatus.IN_STOCK)
                 .category(category)
                 .build();
 
